@@ -28,12 +28,11 @@ export default class Filter extends Component {
                 <TextField
                     fullwidth
                     style={{ width: '90%', margin: '6px 8px 2px 8px' }}
-                    id="outlined-with-placeholder"
+                    id="filter-field"
                     label="Filter"
                     margin="dense"
                     align="center"
                     placeholder="begin typing to filter results"
-                    variant="outlined"
                     InputLabelProps={{
                         shrink: true,
                     }}

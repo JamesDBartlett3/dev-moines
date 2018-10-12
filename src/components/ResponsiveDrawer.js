@@ -9,6 +9,7 @@ import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import List from '@material-ui/core/List'
+import Card from '@material-ui/core/Card'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import Hidden from '@material-ui/core/Hidden'
@@ -78,10 +79,14 @@ class ResponsiveDrawer extends Component {
         const drawer = (
             <div>
                 <div className={classes.toolbar}>
-                    <Filter {...this.state}/>
+                    <Filter />
                 </div>
                 <Divider />
-                <List />
+                <List {...this.props.jobs}>
+                    <Card>
+                        Test
+                    </Card>
+                </List>
             </div>
         )
 

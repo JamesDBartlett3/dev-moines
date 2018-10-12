@@ -1,3 +1,5 @@
+
+
 import React, { Component } from 'react'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 
@@ -7,7 +9,7 @@ const MyMapComponent = withScriptjs(
         <GoogleMap onClick={props.handleMapClick}
             defaultZoom={12}
             zoom={props.zoom}
-            defaultCenter={{ lat: 41.623069, lng: -93.698223 }}
+            defaultCenter={props.center}
             center={props.center}
         >
         {props.markers &&
@@ -61,7 +63,7 @@ export default class Map extends Component {
                 {...this.props}
                 isMarkerShown
                 loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `calc(100vh - calc(18px + 2vmin))` }} />}
+                containerElement={<div style={{ height: `calc(100vh - calc(18px + 5vmin))` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
             />
         )
