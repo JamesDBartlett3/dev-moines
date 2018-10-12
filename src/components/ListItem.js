@@ -1,61 +1,39 @@
 import React, { Component } from 'react'
-import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
-const styles = {
-    card: {
-        style: { width: '100%', textAlign: 'center'}
-    },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
-    title: {
-        fontSize: 14,
-    },
-    pos: {
-        marginBottom: 12,
-    }
-}
-
-class ListItem extends Component {
-
-    render() {
-        const { classes } = this.props
-        const bull = <span className={classes.bullet}>•</span>
-        return (
-            <Card className={classes.card}>
-                <CardActions>
+export default class ListItem extends Component {
+/*
+const jobListing = props => (
+    props.job => (
+        <Card >
+            <CardActions>
                 <CardContent>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        Word of the Day
-                    </Typography>
                     <Typography variant="h5" component="h2">
-                        be
-                        {bull}
-                        nev
-                        {bull}o{bull}
-                        lent
+                        <span>{props.job.company}</span>
                     </Typography>
-                    <Typography className={classes.pos} color="textSecondary">
-                        adjective
+                    <Typography color="textSecondary">
+                        <span>{props.job.position}</span>
                     </Typography>
                     <Typography component="p">
-                        well meaning and kindly.
+                        <span>{props.job.address}</span>
                         <br />
-                        {'"a benevolent smile"'}
+                        <span>{props.job.phone}</span>
                     </Typography>
                 </CardContent>
-                </CardActions>
+            </CardActions>
 
-            </Card>
+        </Card>
+    )
+
+) */
+
+    render() {
+        return (
+            <div>{/* jobListing */}</div>
         )
     }
 
 }
-
-export default withStyles(styles)(ListItem)

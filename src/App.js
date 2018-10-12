@@ -23,6 +23,7 @@
 
 import React, { Component } from 'react'
 import './App.css'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import ResponsiveDrawer from './components/ResponsiveDrawer'
 import * as gMapsAPI from './APIs/GoogleMapsAPI'
 import * as myJsonAPI from './APIs/MyJsonAPI'
@@ -53,6 +54,12 @@ const APIs = {
     }
 }
 
+const theme = createMuiTheme({
+    typography: {
+        useNextVariants: true,
+        suppressDeprecationWarnings: true
+    }
+})
 
 export default class App extends Component {
     constructor() {
@@ -143,13 +150,12 @@ export default class App extends Component {
     render() {
         return (
         <div className="App">
-
-            <div className="App-body">
+            <MuiThemeProvider theme={theme}>
                 <ResponsiveDrawer
                     {...this.state}
                     handleMarkerClick={this.handleMarkerClick}
                     handleMapClick={this.handleMapClick}/>
-            </div>
+            </MuiThemeProvider>
         </div>
         )
     }

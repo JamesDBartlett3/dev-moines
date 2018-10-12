@@ -8,6 +8,7 @@
     "axios": "^0.18.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
+    "react-devtools": "^3.4.0",
     "react-dom": "^16.5.2",
     "react-google-maps": "^9.4.5",
     "react-scripts": "2.0.4",

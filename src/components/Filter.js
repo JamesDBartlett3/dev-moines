@@ -1,8 +1,6 @@
 // This component is based on the Text Fields demo code at:
 // https://material-ui.com/demos/text-fields/#outlined
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 
 export default class Filter extends Component {
@@ -26,7 +24,7 @@ export default class Filter extends Component {
             <form noValidate autoComplete="off">
 
                 <TextField
-                    fullwidth
+                    fullwidth="true"
                     style={{ width: '90%', margin: '6px 8px 2px 8px' }}
                     id="filter-field"
                     label="Filter"
