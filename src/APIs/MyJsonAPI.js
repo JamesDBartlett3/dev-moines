@@ -1,5 +1,6 @@
-const id = '10q460'
 const url = 'https://api.myjson.com/bins/'
+const id = '10q460'
+
 module.exports = {
-	id, url
+	url, id
 }
