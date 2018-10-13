@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 import ListItem from './ListItem'
 
-const jobsList = props => (
-    props.jobs.map(job => (
-        <ListItem job={job}>
+function jobsList (x) {
+    return (
+        x.map(job => (
+        <ListItem key={job.id} job={job}>
         </ListItem>
-    ))
-)
+    )))
+}
 
 
 
 export default class List extends Component {
     render() {
-        console.log(jobsList)
         return (
             <div>
-                {jobsList}
+                {jobsList(this.props.jobs)}
             </div>
         )
     }

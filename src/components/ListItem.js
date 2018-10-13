@@ -4,35 +4,34 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 
-export default class ListItem extends Component {
-/*
-const jobListing = props => (
-    props.job => (
+function jobListing (x) {
+    return (
         <Card >
             <CardActions>
                 <CardContent>
                     <Typography variant="h5" component="h2">
-                        <span>{props.job.company}</span>
+                        <span>{x.company}</span>
                     </Typography>
                     <Typography color="textSecondary">
-                        <span>{props.job.position}</span>
+                        <span>{x.position}</span>
                     </Typography>
                     <Typography component="p">
-                        <span>{props.job.address}</span>
+                        <span>{x.address}</span>
                         <br />
-                        <span>{props.job.phone}</span>
+                        <span>{x.phone}</span>
                     </Typography>
                 </CardContent>
             </CardActions>
 
         </Card>
     )
+}
 
-) */
+export default class ListItem extends Component {
 
     render() {
         return (
-            <div>{/* jobListing */}</div>
+            <div>{ jobListing(this.props.job) }</div>
         )
     }
 
