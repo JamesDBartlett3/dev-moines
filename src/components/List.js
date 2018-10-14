@@ -1,20 +1,26 @@
 import React, {Component} from 'react'
 import ListItem from './ListItem'
 
-const jobsList = x => {
-    return (
-        x.map(job => (
-        <ListItem key={job.id} job={job}>
-        </ListItem>
-    )))
-}
-
 export default class List extends Component {
+    handleFilterJobs = () => {
+        if (this.props.filterInput.length > 0) {
+            const jobs = this.props.jobs.filter(job => job.company
+                .toLowerCase()
+                .includes(this.props.filterInput.toLowerCase()))
+            return jobs.map(job => (
+                <ListItem key={job.id} job={job} />
+            ))
+        } else {
+            return this.props.jobs.map(job => (
+                <ListItem key={job.id} job={job} />
+            ))
+        }
+    }
 
     render() {
         return (
             <div>
-                {jobsList(this.props.jobs)}
+                {this.handleFilterJobs()}
             </div>
         )
     }

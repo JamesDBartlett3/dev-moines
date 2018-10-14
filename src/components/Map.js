@@ -48,7 +48,8 @@ const MyMapComponent = withScriptjs(
                                 <h3>{props.selected.phone}</h3>
                                 <h3>
                                     <a
-                                        target='_blank' 
+                                        target='_blank'
+                                        rel='noopener noreferrer'
                                         href={props.selected.website}
                                     >
                                         Website

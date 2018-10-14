@@ -74,6 +74,7 @@ class ResponsiveDrawer extends Component {
         }
     }
 
+
     handleDrawerToggle = () => {
         this.setState(state => ({mobileOpen: !state.mobileOpen}))
     }
@@ -84,7 +85,9 @@ class ResponsiveDrawer extends Component {
         const drawer = (
             <div>
                 <div className={classes.toolbar}>
-                    <Filter {...this.props}/>
+                    <Filter
+                        {...this.props}
+                    />
                 </div>
                 <Divider />
                 <List {...this.props} />

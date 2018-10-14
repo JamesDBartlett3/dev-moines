@@ -25,7 +25,7 @@
 \---------------------------------------------------------------------------*/
 
 // External Theme & UI Libraries
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 import ResponsiveDrawer from './components/ResponsiveDrawer'
 
 // APIs
@@ -76,6 +76,7 @@ export default class App extends Component {
         super()
         this.state = {
             jobs: [],
+            filterInput: '',
             markers: [],
             center: {
                 lat: gMapsAPI.center.lat,
@@ -94,12 +95,11 @@ export default class App extends Component {
             },
             error: {
 
-            },
-            liftState: object => {
-                this.setState(object)
             }
         }
     }
+
+
 
     closeAllMarkers = () => {
         const markers = this.state.markers.map(marker => {
@@ -107,10 +107,6 @@ export default class App extends Component {
             return marker
         })
         this.setState({markers: Object.assign(this.state.markers, markers)})
-    }
-
-    handleFilterChange = s => {
-        this.setState({s})
     }
 
     handleMarkerClick = marker => {
@@ -139,6 +135,9 @@ export default class App extends Component {
         })
     }
 
+    liftState = (o) => {
+        this.setState(o)
+    }
 
     componentDidMount() {
         // Use axios to get json data from MyJsonAPI
@@ -175,7 +174,9 @@ export default class App extends Component {
                     {...this.state}
                     handleFilterChange={this.handleFilterChange}
                     handleMarkerClick={this.handleMarkerClick}
-                    handleMapClick={this.handleMapClick}/>
+                    handleMapClick={this.handleMapClick}
+                    liftState={this.liftState}
+                />
             </MuiThemeProvider>
         </div>
         )

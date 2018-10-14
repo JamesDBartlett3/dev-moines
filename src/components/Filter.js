@@ -7,9 +7,6 @@ import TextField from '@material-ui/core/TextField'
 export default class Filter extends Component {
     constructor() {
         super()
-        this.state = {
-            filterInput: ''
-        }
     }
 
     handleChange = (e) => {
@@ -25,6 +22,7 @@ export default class Filter extends Component {
             return marker
         })
         this.props.liftState({markers})
+        this.props.liftState({filterInput: e.target.value})
     }
 
     render() {
@@ -43,6 +41,7 @@ export default class Filter extends Component {
                     InputLabelProps={{
                         shrink: true,
                     }}
+                    value={this.props.filterInput}
                     onChange={(e) => this.handleChange(e)}
                 />
             </form>
