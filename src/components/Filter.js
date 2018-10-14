@@ -5,18 +5,26 @@ import React, { Component } from 'react'
 import TextField from '@material-ui/core/TextField'
 
 export default class Filter extends Component {
-
-    state = {
+    constructor() {
+        super()
+        this.state = {
+            filterInput: ''
+        }
     }
 
-    handleChange = name => event => {
-        this.setState({
-            [name]: event.target.value,
+    handleChange = (e) => {
+        this.setState({filterInput: e.target.value})
+        const markers = this.props.jobs.map(job => {
+            const isMatched = job.company.toLowerCase().includes(e.target.value.toLowerCase())
+            const marker = this.props.markers.find(marker => marker.id === job.id)
+            if(isMatched) {
+                marker.isVisible = true
+            }else{
+                marker.isVisible = false
+            }
+            return marker
         })
-    }
-
-    componentDidMount(){
-
+        this.props.liftState({markers})
     }
 
     render() {
@@ -35,6 +43,7 @@ export default class Filter extends Component {
                     InputLabelProps={{
                         shrink: true,
                     }}
+                    onChange={(e) => this.handleChange(e)}
                 />
             </form>
         )

@@ -19,9 +19,21 @@
 }
 
 
-.gm-style-iw {}
+#info-window {
+	max-width: 250px;
+	object-fit: scale-down;
+	left: 25px;
+}
 
-.gm-style img {}
+.gm-style img {
+	max-width: 250px;
+	object-fit: scale-down;
+}
+
+#info-window-img {
+	max-width: 250px;
+	object-fit: scale-down;
+}
 
 /*
 

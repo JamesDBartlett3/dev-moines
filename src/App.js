@@ -24,10 +24,6 @@
 /*============================ <Dependencies> ===============================\
 \---------------------------------------------------------------------------*/
 
-// Basic React Deps
-import './App.css'
-import React, { Component } from 'react'
-
 // External Theme & UI Libraries
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import ResponsiveDrawer from './components/ResponsiveDrawer'
@@ -38,6 +34,10 @@ import * as myJsonAPI from './APIs/MyJsonAPI'
 
 // 3rd Party JS Libraries
 import axios from 'axios'
+
+// Basic React Deps
+import './App.css'
+import React, { Component } from 'react'
 
 /*---------------------------------------------------------------------------\
 \============================== </Dependencies> ============================*/
@@ -94,9 +94,13 @@ export default class App extends Component {
             },
             error: {
 
+            },
+            liftState: object => {
+                this.setState(object)
             }
         }
     }
+
     closeAllMarkers = () => {
         const markers = this.state.markers.map(marker => {
             marker.isOpen = false
@@ -105,20 +109,25 @@ export default class App extends Component {
         this.setState({markers: Object.assign(this.state.markers, markers)})
     }
 
+    handleFilterChange = s => {
+        this.setState({s})
+    }
 
     handleMarkerClick = marker => {
         this.closeAllMarkers()
         marker.isOpen = true
         const selected = this.state.jobs[marker.id]
-        //console.log(selected)
         this.setState({
             markers: Object.assign(this.state.markers, marker),
             selected: Object.assign(selected),
             center: Object.assign({
-                lat: selected.latlng[0],
+                // Tell the map to center itself just a hair to the North
+                // of the marker's actual coordinates, to ensure enough
+                // screen space is left for the InfoWindow to display
+                lat: (selected.latlng[0] + 0.0055),
                 lng: selected.latlng[1]
             }),
-            zoom: 16
+            zoom: 15
         })
     }
 
@@ -129,6 +138,7 @@ export default class App extends Component {
             zoom: 12
         })
     }
+
 
     componentDidMount() {
         // Use axios to get json data from MyJsonAPI
@@ -163,6 +173,7 @@ export default class App extends Component {
             <MuiThemeProvider theme={theme}>
                 <ResponsiveDrawer
                     {...this.state}
+                    handleFilterChange={this.handleFilterChange}
                     handleMarkerClick={this.handleMarkerClick}
                     handleMapClick={this.handleMapClick}/>
             </MuiThemeProvider>

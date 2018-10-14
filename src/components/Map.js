@@ -3,6 +3,11 @@
 import React, { Component } from 'react'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 
+// Split input into comma-delimited array
+const split = s => {
+    return (s.split(','))
+}
+
 const MyMapComponent = withScriptjs(
     withGoogleMap(props => (
 
@@ -23,22 +28,29 @@ const MyMapComponent = withScriptjs(
 
                     {marker.isOpen && (
 
-                        <InfoWindow>
+                        <InfoWindow id='info-window'>
                             <div>
-                                <h1>{props.selected.company}</h1>
-                                <img className='info-window-img'
+                                <img id='info-window-img'
                                     src={props.selected.photo}
                                     alt={props.selected.company}
                                 />
                                 <h2>{props.selected.position}</h2>
-                                <h3>{props.selected.address.split(',')[0]}
+                                <h3>
+                                    {/* use split() to break job address into
+                                    a comma-delimited array, then display
+                                    street address on first line, followed by
+                                    city, state, and zip on second line */}
+                                    {split(props.selected.address)[0]}
                                     <br/>
-                                    {props.selected.address.split(',')[1]},
-                                    {props.selected.address.split(',')[2]}
+                                    {split(props.selected.address)[1]},
+                                    {split(props.selected.address)[2]}
                                 </h3>
                                 <h3>{props.selected.phone}</h3>
                                 <h3>
-                                    <a href={props.selected.website}>
+                                    <a
+                                        target='_blank' 
+                                        href={props.selected.website}
+                                    >
                                         Website
                                     </a>
                                 </h3>

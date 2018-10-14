@@ -1,17 +1,20 @@
 // This component is based on the ResponsiveDrawer demo code at:
 // https://material-ui.com/demos/drawers/#responsive-drawer
 
-import React, { Component } from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+// Import Remote Deps & Components
+import React, {Component} from 'react'
 import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import IconButton from '@material-ui/core/IconButton'
 import Hidden from '@material-ui/core/Hidden'
+import Toolbar from '@material-ui/core/Toolbar'
 import Divider from '@material-ui/core/Divider'
 import MenuIcon from '@material-ui/icons/Menu'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import {withStyles} from '@material-ui/core/styles'
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+
+// Import Local Sub-Components
 import Filter from './Filter'
 import List from './List'
 import Map from './Map'
@@ -19,6 +22,7 @@ import Map from './Map'
 const drawerWidth = 'calc(5vw + 240px)'
 
 const styles = theme => ({
+
     root: {
         flexGrow: 1,
         height: '100vh',
@@ -63,21 +67,24 @@ const styles = theme => ({
 })
 
 class ResponsiveDrawer extends Component {
-    state = {
-        mobileOpen: false,
+    constructor() {
+        super()
+        this.state = {
+            mobileOpen: false,
+        }
     }
 
     handleDrawerToggle = () => {
-        this.setState(state => ({ mobileOpen: !state.mobileOpen }))
+        this.setState(state => ({mobileOpen: !state.mobileOpen}))
     }
 
     render() {
-        const { classes, theme } = this.props
+        const {classes, theme} = this.props
 
         const drawer = (
             <div>
                 <div className={classes.toolbar}>
-                    <Filter />
+                    <Filter {...this.props}/>
                 </div>
                 <Divider />
                 <List {...this.props} />
@@ -146,4 +153,4 @@ class ResponsiveDrawer extends Component {
     }
 }
 
-export default withStyles(styles, { withTheme: true })(ResponsiveDrawer)
+export default withStyles(styles, {withTheme: true})(ResponsiveDrawer)

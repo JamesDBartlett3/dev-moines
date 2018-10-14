@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import ListItem from './ListItem'
 
-function jobsList (x) {
+const jobsList = x => {
     return (
         x.map(job => (
         <ListItem key={job.id} job={job}>
@@ -9,9 +9,8 @@ function jobsList (x) {
     )))
 }
 
-
-
 export default class List extends Component {
+
     render() {
         return (
             <div>
