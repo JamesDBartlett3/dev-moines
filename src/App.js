@@ -3,16 +3,19 @@
 |-----------------------------------------------------------------------------|
 | Acknowledgments:                                                            |
 |                                                                             |
-| @Elharony for publishing the super-helpful video series on YouTube called   |
+| Elharony for publishing the super-helpful video series on YouTube called    |
 | "Udacity | Neighborhood Map". Thanks for making a complex task so simple!   |
 | Reference: https://goo.gl/gA7U2E                                            |
 |                                                                             |
-| @RASG on JSFiddle (http://jsfiddle.net/RASG/X5mhL/) for demonstrating how   |
+| RASG on JSFiddle (http://jsfiddle.net/RASG/X5mhL/) for demonstrating how    |
 | to simulate a mouse click on a map marker                                   |
 |                                                                             |
-| @Forrest Walker on YouTube (https://goo.gl/XrrXg9) for the comprehensive    |
+| Forrest Walker on YouTube (https://goo.gl/XrrXg9) for the comprehensive     |
 | walkthrough video series on P7. I finally learned how state & props work!   |
-| |
+|                                                                             |
+| Rodrick Bloomfield @GitHub (https://github.com/bloom305) for demonstrating  |
+| many different ways to approach this project. Finding the commonalities     |
+| between them made it a LOT easier to grasp how everything fits together.    |
 | |
 | |
 \___________________________________________________________________________*/
@@ -21,12 +24,19 @@
 /*============================ <Dependencies> ===============================\
 \---------------------------------------------------------------------------*/
 
-import React, { Component } from 'react'
+// Basic React Deps
 import './App.css'
+import React, { Component } from 'react'
+
+// External Theme & UI Libraries
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import ResponsiveDrawer from './components/ResponsiveDrawer'
+
+// APIs
 import * as gMapsAPI from './APIs/GoogleMapsAPI'
 import * as myJsonAPI from './APIs/MyJsonAPI'
+
+// 3rd Party JS Libraries
 import axios from 'axios'
 
 /*---------------------------------------------------------------------------\
@@ -45,8 +55,8 @@ const APIs = {
             /* ...then comment out the line below this one...*/
             client: `${gMapsAPI.client}`,
 
-            /* ...then open APIs/GoogleMapsApi.js & follow the instructions. */
-        }),
+            /* ...then open APIs/GoogleMapsApi.js & follow its instructions. */
+        })
     },
     myJson: {
         id:`${myJsonAPI.id}`,
@@ -80,7 +90,7 @@ export default class App extends Component {
                 photo: '',
                 address:'',
                 phone: '',
-                website: '',
+                website: ''
             },
             error: {
 
