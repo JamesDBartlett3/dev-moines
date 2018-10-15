@@ -17,11 +17,9 @@ export default class ListItem extends Component {
 
         const jobCard = x => {
 
-            const handleKeyPress = (target) => {
-                if(target.charCode==13){
-                    this.props.handleMarkerClick(
-                        this.props.markers[x.id]
-                    )
+            const handleEnterKey = (key) => {
+                if(key.charCode === 13) {
+                    this.props.handleMarkerClick(this.props.markers[x.id])
                 }
             }
 
@@ -38,7 +36,7 @@ export default class ListItem extends Component {
                         marginLeft: '8px'
                     }}
                     tabIndex={0}
-                    onKeyPress={handleKeyPress}
+                    onKeyPress={handleEnterKey}
                     >
                     <CardActions
                         style={{width:'100%'}}
