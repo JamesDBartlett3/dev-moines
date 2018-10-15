@@ -33,11 +33,13 @@ import * as gMapsAPI from './APIs/GoogleMapsAPI'
 import * as myJsonAPI from './APIs/MyJsonAPI'
 
 // 3rd Party JS Libraries
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
 
 // Basic React Deps
 import './App.css'
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 /*---------------------------------------------------------------------------\
 \============================== </Dependencies> ============================*/
@@ -64,12 +66,14 @@ const APIs = {
     }
 }
 
+// Preemptively silence some annoying syntax deprecation warning messages
 const theme = createMuiTheme({
     typography: {
         useNextVariants: true,
         suppressDeprecationWarnings: true
     }
 })
+
 
 export default class App extends Component {
     constructor() {
@@ -99,6 +103,31 @@ export default class App extends Component {
         }
     }
 
+    // Use `toastify` to render toast-style message dialogs
+    handleError = () => toast.error(
+        <div style={{color: 'black', fontWeight: 'bold'}}>
+            <span role="img" aria-label="error">‼ </span>
+            Error Message
+            <span role="img" aria-label="error"> ‼</span>
+        </div>
+    )
+    handleOffline = () => toast.warning(
+        <div style={{color: 'black', fontWeight: 'bold'}}>
+            <span role="img" aria-label="offline">⦸ </span>
+            Offline Message
+            <span role="img" aria-label="offline"> ⦸</span>
+        </div>
+    )
+    handleCached = () => toast.success(
+        <div style={{color: 'black', fontWeight: 'bold'}}>
+            <span role="img" aria-label="check">✓ </span>
+            App successfully cached!
+            <span role="img" aria-label="check"> ✓</span><br />
+            <span role="img" aria-label="globe-western-hemisphere">🌎 </span>
+             Offline mode now available.
+            <span role="img" aria-label="globe-eastern-hemisphere"> 🌍</span>
+        </div>
+    )
 
 
     closeAllMarkers = () => {
@@ -122,9 +151,11 @@ export default class App extends Component {
                 // screen space is left for the InfoWindow to display
                 lat: (selected.latlng[0] + 0.0055),
                 lng: selected.latlng[1]
-            }),
-            zoom: 15
-        })
+            })})
+        setTimeout(() => {
+            this.setState({zoom: 15})
+        },1)
+
     }
 
     handleMapClick = () => {
@@ -169,6 +200,9 @@ export default class App extends Component {
     render() {
         return (
         <div className="App">
+            <button onClick={this.handleError}>Test Error</button>
+            <button onClick={this.handleOffline}>Test Offline</button>
+            <button onClick={this.handleCached}>Test Cached</button>
             <MuiThemeProvider theme={theme}>
                 <ResponsiveDrawer
                     {...this.state}
@@ -178,6 +212,9 @@ export default class App extends Component {
                     liftState={this.liftState}
                 />
             </MuiThemeProvider>
+            <ToastContainer
+                position='bottom-center'
+            />
         </div>
         )
     }

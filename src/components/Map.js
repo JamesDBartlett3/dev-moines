@@ -11,7 +11,8 @@ const split = s => {
 const MyMapComponent = withScriptjs(
     withGoogleMap(props => (
 
-        <GoogleMap onClick={props.handleMapClick}
+        <GoogleMap
+            onClick={props.handleMapClick}
             defaultZoom={12}
             zoom={props.zoom}
             defaultCenter={props.center}
@@ -21,9 +22,11 @@ const MyMapComponent = withScriptjs(
             props.markers
                 .filter(marker => marker.isVisible)
                 .map((marker,index) => (
-                <Marker key={index}
+                <Marker
+                    key={index} {...props}
                     position={{ lat: marker.lat, lng: marker.lng }}
                     onClick={() => props.handleMarkerClick(marker)}
+                    animation={2}
                 >
 
                     {marker.isOpen && (
@@ -78,6 +81,7 @@ export default class Map extends Component {
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `calc(100vh - calc(18px + 5vmin))` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
+                animation={{setAnimation: 'google.maps.Animation.DROP'}}
             />
         )
     }

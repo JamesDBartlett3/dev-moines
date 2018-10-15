@@ -11,16 +11,16 @@ const split = s => {
     return (s.split(','))
 }
 
-const jobListing = x => {
+const jobCard = x => {
 
     // use split() to break job address into a comma-delimited array
     const addressArray = split(x.address)
 
     return (
-        <Card >
+        <Card>
             <CardActions>
                 <CardContent>
-                    <Typography variant="h5" component="h2">
+                    <Typography variant="h6">
                         <span>{x.company}</span>
                     </Typography>
                     <Typography color="textSecondary">
@@ -36,7 +36,7 @@ const jobListing = x => {
                             {addressArray[1]},{addressArray[2]}
                         </span>
                         <br />
-                        
+
                         <span>{x.phone}</span>
                     </Typography>
                 </CardContent>
@@ -50,7 +50,7 @@ export default class ListItem extends Component {
 
     render() {
         return (
-            <div>{jobListing(this.props.job)}</div>
+            <div>{jobCard(this.props.job)}</div>
         )
     }
 

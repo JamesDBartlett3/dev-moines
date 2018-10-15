@@ -5,9 +5,6 @@ import React, { Component } from 'react'
 import TextField from '@material-ui/core/TextField'
 
 export default class Filter extends Component {
-    constructor() {
-        super()
-    }
 
     handleChange = (e) => {
         this.setState({filterInput: e.target.value})
