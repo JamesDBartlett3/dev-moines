@@ -232,7 +232,7 @@ export default class App extends Component {
                     {...this.state}
                     handleFilterChange={this.handleFilterChange}
                     handleMarkerClick={this.handleMarkerClick}
-                {/* closeAllMarkers={this.closeAllMarkers} */}
+                    // closeAllMarkers={this.closeAllMarkers}
                     handleMapClick={this.handleMapClick}
                     liftState={this.liftState}
                 />
