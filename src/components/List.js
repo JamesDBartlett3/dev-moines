@@ -1,13 +1,13 @@
+
+
 import React, {Component} from 'react'
 import ListItem from './ListItem'
-
-
 
 export default class List extends Component {
 
     listItem = (job) => {
         return(
-            <ListItem key={job.id} job={job} />
+            <ListItem {...this.props} key={job.id} job={job} />
         )
     }
 

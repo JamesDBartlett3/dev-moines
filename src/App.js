@@ -48,8 +48,13 @@ import React, {Component} from 'react'
 /*================================== <App> ==================================\
 \---------------------------------------------------------------------------*/
 
+// set up easy access to the APIs used in this app
 const APIs = {
+
+    // Google Maps
     gMaps: {
+        // using the `params` attribute allows us to string multiple query
+        // parameters together later on without manual concatenation
         params: new URLSearchParams({
             /* To use your own API key, uncomment the line below this one... */
             // key: `${gMapsAPI.key}`,
@@ -60,6 +65,8 @@ const APIs = {
             /* ...then open APIs/GoogleMapsApi.js & follow its instructions. */
         })
     },
+
+    // MyJSON.com
     myJson: {
         id:`${myJsonAPI.id}`,
         url:`${myJsonAPI.url}`
@@ -74,10 +81,11 @@ const theme = createMuiTheme({
     }
 })
 
-
+// App Component
 export default class App extends Component {
     constructor() {
         super()
+        // Initialize state for the app
         this.state = {
             jobs: [],
             filterInput: '',
@@ -129,19 +137,33 @@ export default class App extends Component {
         </div>
     )
 
-
+    // Function to close all currently-open markers on the map
     closeAllMarkers = () => {
+        // map through all of the markers in state and set as `markers`
         const markers = this.state.markers.map(marker => {
+            // on each marker, change its `isOpen` to false
             marker.isOpen = false
+            // then return it
             return marker
         })
+        // Once all markers have been closed, update the state to match.
         this.setState({markers: Object.assign(this.state.markers, markers)})
     }
 
+    // Function to handle when user clicks on a map marker.
     handleMarkerClick = marker => {
+
+        // First, close any remaining open markers
         this.closeAllMarkers()
+
+        // set the current marker's `isOpen` to true
         marker.isOpen = true
+
+        // create `selected` variable and set it to the job object whose
+        // id value matches that of the clicked marker
         const selected = this.state.jobs[marker.id]
+
+        // update state of markers, selected, and center
         this.setState({
             markers: Object.assign(this.state.markers, marker),
             selected: Object.assign(selected),
@@ -162,7 +184,8 @@ export default class App extends Component {
         this.closeAllMarkers()
         this.setState({
             center: gMapsAPI.center,
-            zoom: 12
+            zoom: 12,
+            selected: {id: ''}
         })
     }
 

@@ -1,3 +1,5 @@
+/*  global google  */
+
 // This component is modeled after the one Forrest Walker demonstrated in his
 // tutorial video series on YouTube (https://goo.gl/XrrXg9). Thanks, Forrest!
 
@@ -22,12 +24,12 @@ const MyMapComponent = withScriptjs(
         {props.markers &&
             props.markers
                 .filter(marker => marker.isVisible)
-                .map((marker,index) => (
+                .map((marker, index) => (
                 <Marker
                     key={index} {...props}
                     position={{ lat: marker.lat, lng: marker.lng }}
                     onClick={() => props.handleMarkerClick(marker)}
-                    animation={2}
+                    animation={marker.id === props.selected.id ? 1 : 2}
                 >
 
                     {marker.isOpen && (
