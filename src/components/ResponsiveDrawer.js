@@ -90,6 +90,7 @@ class ResponsiveDrawer extends Component {
                     />
                 </div>
                 <Divider />
+                <br />
                 <List {...this.props} />
             </div>
         )

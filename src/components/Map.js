@@ -14,7 +14,7 @@ const MyMapComponent = withScriptjs(
 
         <GoogleMap
             onClick={props.handleMapClick}
-            defaultZoom={12}
+            defaultZoom={11}
             zoom={props.zoom}
             defaultCenter={props.center}
             center={props.center}

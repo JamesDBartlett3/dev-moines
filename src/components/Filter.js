@@ -30,7 +30,7 @@ export default class Filter extends Component {
                 <TextField
                     fullwidth="true"
                     style={{ width: '90%', margin: '6px 8px 2px 8px' }}
-                    id="filter-field"
+                    id="filter-input-field"
                     label="Filter"
                     margin="dense"
                     align="center"

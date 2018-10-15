@@ -21,8 +21,13 @@ export default class ListItem extends Component {
             const addressArray = split(x.address)
 
             return (
-                <Card>
-                    <CardActions style={{width:'100%'}}>
+                <Card
+                    /* tabIndex={0}
+                    onSelect={console.log(x.company + ' is focused')} */
+                    >
+                    <CardActions
+                        style={{width:'100%'}}
+                        >
                         <CardContent
                             style={{width:'100%'}}
                             onClick={() => this.props.handleMarkerClick(
@@ -54,7 +59,7 @@ export default class ListItem extends Component {
         }
 
         return (
-            <div><br />{jobCard(this.props.job)}</div>
+            <div>{jobCard(this.props.job)}<br /></div>
         )
     }
 

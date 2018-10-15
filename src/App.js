@@ -94,7 +94,7 @@ export default class App extends Component {
                 lat: gMapsAPI.center.lat,
                 lng: gMapsAPI.center.lng
             },
-            zoom: 12,
+            zoom: 11,
             googleMapURL: `${gMapsAPI.url}${APIs.gMaps.params}`,
             selected: {
                 id: '',
@@ -184,7 +184,7 @@ export default class App extends Component {
         this.closeAllMarkers()
         this.setState({
             center: gMapsAPI.center,
-            zoom: 12,
+            zoom: 11,
             selected: {id: ''}
         })
     }

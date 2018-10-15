@@ -11,6 +11,7 @@
 		"react-devtools": "^3.4.0",
 		"react-dom": "^16.5.2",
 		"react-google-maps": "^9.4.5",
+		"react-keydown": "^1.9.7",
 		"react-scripts": "2.0.4",
 		"react-toastify": "^4.4.0",
 		"recompose": "^0.30.0"
