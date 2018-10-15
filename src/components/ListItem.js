@@ -22,6 +22,10 @@ export default class ListItem extends Component {
 
             return (
                 <Card
+                    style={{
+                        cursor: 'pointer',
+                        backgroundColor: 'rgb(122, 152, 152)'
+                    }}
                     /* tabIndex={0}
                     onSelect={console.log(x.company + ' is focused')} */
                     >
@@ -29,15 +33,20 @@ export default class ListItem extends Component {
                         style={{width:'100%'}}
                         >
                         <CardContent
-                            style={{width:'100%'}}
+                            style={{
+                                width:'100%',
+                                color: 'rgb(21, 28, 42)'
+                            }}
                             onClick={() => this.props.handleMarkerClick(
                                 this.props.markers[x.id]
                         )}>
-                            <Typography variant="h6">
+                            <Typography variant='title'>
                                 <span>{x.company}</span>
                             </Typography>
-                            <Typography color="textSecondary">
-                                <span>{x.position}</span>
+                            <Typography variant='subtitle1'>
+                                <span>
+                                    {x.position}
+                                </span>
                             </Typography>
                             <Typography component="p">
 
@@ -59,7 +68,12 @@ export default class ListItem extends Component {
         }
 
         return (
-            <div>{jobCard(this.props.job)}<br /></div>
+            <div style={{
+                backgroundColor: 'rgba(0, 0, 0, 0)'
+            }}>
+                {jobCard(this.props.job)}
+                <br />
+            </div>
         )
     }
 

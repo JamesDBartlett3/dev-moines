@@ -35,7 +35,9 @@ export default class List extends Component {
     render() {
 
         return (
-            <div>
+            <div style={{
+                backgroundColor: 'rgba(0, 0, 0, 0)'
+            }}>
                 {this.handleFilterJobs()}
             </div>
         )

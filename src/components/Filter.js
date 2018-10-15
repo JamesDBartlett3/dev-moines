@@ -2,7 +2,7 @@
 // https://material-ui.com/demos/text-fields/#outlined
 
 import React, { Component } from 'react'
-import TextField from '@material-ui/core/TextField'
+import InputBase from '@material-ui/core/InputBase'
 
 export default class Filter extends Component {
 
@@ -26,17 +26,16 @@ export default class Filter extends Component {
 
         return (
             <form noValidate autoComplete="off">
-
-                <TextField
-                    fullwidth="true"
-                    style={{ width: '90%', margin: '6px 8px 2px 8px' }}
-                    id="filter-input-field"
-                    label="Filter"
-                    margin="dense"
-                    align="center"
-                    placeholder="begin typing to filter results"
-                    InputLabelProps={{
-                        shrink: true,
+                <InputBase
+                    placeholder="filter by business name"
+                    style={{
+                        width: '90%',
+                        height: '100%',
+                        margin: '6px 8px 2px 8px',
+                        backgroundColor: 'rgb(122, 152, 152)',
+                        color: 'rgb(21, 28, 42)',
+                        fontSize: '20px',
+                        justify: 'center'
                     }}
                     value={this.props.filterInput}
                     onChange={(e) => this.handleChange(e)}

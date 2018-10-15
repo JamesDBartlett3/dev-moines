@@ -33,7 +33,8 @@ const styles = theme => ({
         width: '100%',
     },
     appBar: {
-        backgroundColor: 'rgb(45, 45, 45)',
+        color: 'rgb(122, 152, 152)',
+        backgroundColor: 'rgb(21, 28, 42)',
         position: 'absolute',
         marginLeft: drawerWidth,
         [theme.breakpoints.up('md')]: {
@@ -48,6 +49,7 @@ const styles = theme => ({
     toolbar: theme.mixins.toolbar,
 
     drawerPaper: {
+        backgroundColor: 'rgba(0, 0, 0, 0)',
         width: drawerWidth,
         [theme.breakpoints.up('md')]: {
             position: 'relative',
@@ -55,7 +57,8 @@ const styles = theme => ({
     },
     content: {
         flexGrow: 1,
-        backgroundColor: theme.palette.background.default,
+        // backgroundColor: theme.palette.background.default,
+        backgroundColor: 'rgba(0, 0, 0, 0)',
         padding: theme.spacing.unit * 0,
         position: 'relative'
     },
@@ -84,7 +87,13 @@ class ResponsiveDrawer extends Component {
 
         const drawer = (
             <div>
-                <div className={classes.toolbar}>
+                <div
+                    className={classes.toolbar}
+                    style={{
+                        backgroundColor: 'rgb(122, 152, 152)',
+                        color: 'rgb(21, 28, 42)'
+                    }}
+                >
                     <Filter
                         {...this.props}
                     />
@@ -137,7 +146,11 @@ class ResponsiveDrawer extends Component {
                 </Hidden>
                 <Hidden smDown implementation="css">
                     <Drawer
-                        style={{height: '100vh', overflow: 'auto'}}
+                        style={{
+                            height: '100vh',
+                            overflow: 'auto',
+                            backgroundColor: 'rgb(21, 28, 42)'
+                        }}
                         variant="permanent"
                         open
                         classes={{
