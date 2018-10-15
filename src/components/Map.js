@@ -1,7 +1,8 @@
+// This component is modeled after the one Forrest Walker demonstrated in his
+// tutorial video series on YouTube (https://goo.gl/XrrXg9). Thanks, Forrest!
 
-
-import React, { Component } from 'react'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
+import React, {Component} from 'react'
+import {withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 
 // Split input into comma-delimited array
 const split = s => {

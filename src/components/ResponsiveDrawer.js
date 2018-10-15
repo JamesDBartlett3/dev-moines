@@ -117,7 +117,7 @@ class ResponsiveDrawer extends Component {
                     </Toolbar>
                 </AppBar>
                 <Hidden mdUp>
-                    <SwipeableDrawer {...this.props}
+                    <SwipeableDrawer
                         minFlingVelocity={350}
                         variant="temporary"
                         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
@@ -135,7 +135,7 @@ class ResponsiveDrawer extends Component {
                     </SwipeableDrawer>
                 </Hidden>
                 <Hidden smDown implementation="css">
-                    <Drawer {...this.props}
+                    <Drawer
                         variant="permanent"
                         open
                         classes={{
