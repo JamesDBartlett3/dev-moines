@@ -25,7 +25,11 @@ export default class Filter extends Component {
     render() {
 
         return (
-            <form noValidate autoComplete="off">
+            <form
+                noValidate
+                autoComplete="off"
+                onSubmit={e => { e.preventDefault(); }}
+            >
                 <InputBase
                     placeholder="filter by business name"
                     style={{
