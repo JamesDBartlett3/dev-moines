@@ -177,8 +177,12 @@ export default class App extends Component {
 
     }
 
+    // function to handle when a user clicks anywhere on the map
+    // other than a marker
     handleMapClick = () => {
+        // close any markers that are still open
         this.closeAllMarkers()
+        // return state back to "nothing selected"
         this.setState({
             center: gMapsAPI.center,
             zoom: 11,
@@ -186,17 +190,22 @@ export default class App extends Component {
         })
     }
 
+    // Helper function for pulling state updates up from
+    // child components, so that the updated state may be
+    // used to update other components.
     liftState = (o) => {
         this.setState(o)
     }
 
+    // Fire this event when the App mounts successfully
     componentDidMount() {
         // Use axios to get json data from MyJsonAPI
         axios.get(`${APIs.myJson.url}${APIs.myJson.id}`)
-        // then feed the results into initJobs variable
+        // then feed the results into jobs variable
         .then(res => {
             const jobs = res.data.jobs
             const center = gMapsAPI.center
+            // create complete list of map markers from json data
             const markers = jobs.map(job => {
                 return {
                     lat: job.latlng[0],
@@ -206,6 +215,8 @@ export default class App extends Component {
                     id: job.id
                 }
             })
+            // set the App state to reflect all of
+            // this freshly acquired data
             this.setState({jobs,markers,center})
         })
 
@@ -224,6 +235,10 @@ export default class App extends Component {
             <button onClick={this.handleOffline}>Test Offline</button>
             <button onClick={this.handleCached}>Test Cached</button>
              */}
+
+            {/* Render the ResponsiveDrawer component inside of
+                a MuiThemeProvider component. Pass App state, handleX, and
+                liftState functions down as props to children components */}
             <MuiThemeProvider theme={theme}>
                 <ResponsiveDrawer
                     {...this.state}
@@ -234,6 +249,9 @@ export default class App extends Component {
                     liftState={this.liftState}
                 />
             </MuiThemeProvider>
+
+            {/* Render the ToastContainer to display errors and other
+                messages as graphical UI components rather than console  */}
             <ToastContainer
                 position='bottom-center'
             />

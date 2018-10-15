@@ -19,8 +19,10 @@ import Filter from './Filter'
 import List from './List'
 import Map from './Map'
 
+// set drawer width
 const drawerWidth = 'calc(5vw + 240px)'
 
+// set theme values
 const styles = theme => ({
 
     root: {
@@ -69,6 +71,7 @@ const styles = theme => ({
     }
 })
 
+// ResponsiveDrawer Class Component
 class ResponsiveDrawer extends Component {
     constructor() {
         super()
@@ -77,7 +80,8 @@ class ResponsiveDrawer extends Component {
         }
     }
 
-
+    // handler function for when the drawer is toggled, either by
+    // the user directly (menu button), or by the screen size changing.
     handleDrawerToggle = () => {
         this.setState(state => ({mobileOpen: !state.mobileOpen}))
     }
@@ -85,9 +89,11 @@ class ResponsiveDrawer extends Component {
     render() {
         const {classes, theme} = this.props
 
+        // set up the contents that will be in the drawer/sidebar
         const drawer = (
             <div>
                 <div
+                    // override the default theme
                     className={classes.toolbar}
                     style={{
                         backgroundColor: 'rgb(149, 184, 175)',
@@ -97,18 +103,21 @@ class ResponsiveDrawer extends Component {
                         margin: '8px 0 -5px 8px',
                     }}
                 >
-                    <Filter
+                    <Filter // pass props down to children
                         {...this.props}
                     />
                 </div>
                 <Divider />
                 <br />
-                <List {...this.props} />
+                <List {...this.props} // pass props down to children
+                />
             </div>
         )
 
         return (
             <div className={classes.root}>
+                {/* AppBar is the dark bar across the top of the screen
+                    where the page title and menu button can be found */}
                 <AppBar className={classes.appBar}>
                     <Toolbar>
                         <IconButton
@@ -129,6 +138,10 @@ class ResponsiveDrawer extends Component {
                         </Typography>
                     </Toolbar>
                 </AppBar>
+
+                {/* This version of the drawer is for smaller screens. It
+                    will load hidden, and the user can open it with the menu
+                    button on the far left side of the App bar.  */}
                 <Hidden mdUp>
                     <SwipeableDrawer
                         minFlingVelocity={350}
@@ -147,6 +160,11 @@ class ResponsiveDrawer extends Component {
                         {drawer}
                     </SwipeableDrawer>
                 </Hidden>
+
+                {/* This verison of the drawer only appears when the user's
+                screen size is wide enough to accommodate it. Only one
+                drawer instance can appear at any given time, so the UX
+                is pretty seamless. */}
                 <Hidden smDown implementation="css">
                     <Drawer
                         style={{
@@ -163,9 +181,13 @@ class ResponsiveDrawer extends Component {
                         {drawer}
                     </Drawer>
                 </Hidden>
+
+                {/* Finally, we render the map component, enclosed in a
+                    couple of style inheritance divs  */}
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
-                    <Map
+                    <Map 
+                        // of course, it will need access to App's props.
                         {...this.props}
                     />
                 </main>

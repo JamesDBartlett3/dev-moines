@@ -9,6 +9,8 @@ const split = s => {
     return (s.split(','))
 }
 
+// Google Maps Custom Theme JSON
+// courtesy of Google (https://mapstyle.withgoogle.com/)
 const mapStyle = [
 {
 	"elementType": "geometry",
@@ -247,10 +249,11 @@ const mapStyle = [
 	]
 }]
 
+
 const MyMapComponent = withScriptjs(
     withGoogleMap(props => (
-
         <GoogleMap
+            // a few custom UI options to enhance the UX
             options={{
                 styles: mapStyle,
                 scrollwheel: false,
@@ -259,6 +262,8 @@ const MyMapComponent = withScriptjs(
                 streetViewControl: false,
                 backgroundColor: 'rgb(39, 48, 78)',
             }}
+            // when user clicks anywhere on the map other than
+            // a marker, fire the handleMapClick function from App
             onClick={props.handleMapClick}
             defaultZoom={11}
             zoom={props.zoom}
@@ -267,17 +272,29 @@ const MyMapComponent = withScriptjs(
         >
         {props.markers &&
             props.markers
+                // map over all the markers, filtering for
+                // those flagged as visible.
                 .filter(marker => marker.isVisible)
                 .map((marker, index) => (
+
+                // Render the markers that are visible
                 <Marker
                     key={index} {...props}
+                    // set each marker's position to its latlng coordinates
                     position={{ lat: marker.lat, lng: marker.lng }}
+                    // when user clicks a marker, fire the
+                    // handleMarkerClick function from App
                     onClick={() => props.handleMarkerClick(marker)}
+                    // Set animation style: The currently selected marker
+                    // gets the bounce animation(1), and all others get
+                    // the drop animation(2).
                     animation={marker.id === props.selected.id ? 1 : 2}
                 >
 
                     {marker.isOpen && (
-
+                        // If a marker is flagged as open, it should display
+                        // its InfoWindow, containing additional information
+                        // about the job listing.
                         <InfoWindow id='info-window'>
                             <div>
                                 <img id='info-window-img'
@@ -316,7 +333,7 @@ const MyMapComponent = withScriptjs(
 
 
 
-
+// The Map Class Component
 export default class Map extends Component {
 
     render() {
