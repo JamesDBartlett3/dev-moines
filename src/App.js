@@ -13,8 +13,6 @@
 | Rodrick Bloomfield @GitHub (https://github.com/bloom305) for demonstrating  |
 | many different ways to approach this project. Finding the commonalities     |
 | between them made it a LOT easier to grasp how everything fits together.    |
-| |
-| |
 \___________________________________________________________________________*/
 
 
