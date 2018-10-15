@@ -57,8 +57,8 @@ const styles = theme => ({
     },
     content: {
         flexGrow: 1,
-        // backgroundColor: theme.palette.background.default,
-        backgroundColor: 'rgba(0, 0, 0, 0)',
+        //backgroundColor: theme.palette.background.default,
+        backgroundColor: 'rgba(39, 48, 78, 1)',
         padding: theme.spacing.unit * 0,
         position: 'relative'
     },
@@ -91,7 +91,10 @@ class ResponsiveDrawer extends Component {
                     className={classes.toolbar}
                     style={{
                         backgroundColor: 'rgb(122, 152, 152)',
-                        color: 'rgb(21, 28, 42)'
+                        color: 'rgb(21, 28, 42)',
+                        borderRadius: '15px',
+                        width: '95%',
+                        margin: '8px 0 -5px 8px',
                     }}
                 >
                     <Filter

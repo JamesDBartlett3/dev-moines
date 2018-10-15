@@ -31,11 +31,11 @@ export default class Filter extends Component {
                     style={{
                         width: '90%',
                         height: '100%',
-                        margin: '6px 8px 2px 8px',
+                        margin: '6px 8px 0 8px',
                         backgroundColor: 'rgb(122, 152, 152)',
                         color: 'rgb(21, 28, 42)',
                         fontSize: '20px',
-                        justify: 'center'
+                        justifyContent: 'center'
                     }}
                     value={this.props.filterInput}
                     onChange={(e) => this.handleChange(e)}

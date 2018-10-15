@@ -17,6 +17,14 @@ export default class ListItem extends Component {
 
         const jobCard = x => {
 
+            const handleKeyPress = (target) => {
+                if(target.charCode==13){
+                    this.props.handleMarkerClick(
+                        this.props.markers[x.id]
+                    )
+                }
+            }
+
             // use split() to break job address into a comma-delimited array
             const addressArray = split(x.address)
 
@@ -24,10 +32,13 @@ export default class ListItem extends Component {
                 <Card
                     style={{
                         cursor: 'pointer',
-                        backgroundColor: 'rgb(122, 152, 152)'
+                        backgroundColor: 'rgb(122, 152, 152)',
+                        borderRadius: '15px',
+                        width: '95%',
+                        marginLeft: '8px'
                     }}
-                    /* tabIndex={0}
-                    onSelect={console.log(x.company + ' is focused')} */
+                    tabIndex={0}
+                    onKeyPress={handleKeyPress}
                     >
                     <CardActions
                         style={{width:'100%'}}
