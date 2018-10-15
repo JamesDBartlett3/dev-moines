@@ -30,7 +30,7 @@ export default class ListItem extends Component {
                 <Card
                     style={{
                         cursor: 'pointer',
-                        backgroundColor: 'rgb(122, 152, 152)',
+                        backgroundColor: 'rgb(149, 184, 175)',
                         borderRadius: '15px',
                         width: '95%',
                         marginLeft: '8px'

@@ -33,7 +33,7 @@ const styles = theme => ({
         width: '100%',
     },
     appBar: {
-        color: 'rgb(122, 152, 152)',
+        color: 'rgb(149, 184, 175)',
         backgroundColor: 'rgb(21, 28, 42)',
         position: 'absolute',
         marginLeft: drawerWidth,
@@ -90,7 +90,7 @@ class ResponsiveDrawer extends Component {
                 <div
                     className={classes.toolbar}
                     style={{
-                        backgroundColor: 'rgb(122, 152, 152)',
+                        backgroundColor: 'rgb(149, 184, 175)',
                         color: 'rgb(21, 28, 42)',
                         borderRadius: '15px',
                         width: '95%',

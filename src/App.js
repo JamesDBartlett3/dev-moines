@@ -7,9 +7,6 @@
 | "Udacity | Neighborhood Map". Thanks for making a complex task so simple!   |
 | Reference: https://goo.gl/gA7U2E                                            |
 |                                                                             |
-| RASG on JSFiddle (http://jsfiddle.net/RASG/X5mhL/) for demonstrating how    |
-| to simulate a mouse click on a map marker                                   |
-|                                                                             |
 | Forrest Walker on YouTube (https://goo.gl/XrrXg9) for the comprehensive     |
 | walkthrough video series on P7. I finally learned how state & props work!   |
 |                                                                             |

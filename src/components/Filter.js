@@ -36,7 +36,7 @@ export default class Filter extends Component {
                         width: '90%',
                         height: '100%',
                         margin: '6px 8px 0 8px',
-                        backgroundColor: 'rgb(122, 152, 152)',
+                        backgroundColor: 'rgb(149, 184, 175)',
                         color: 'rgb(21, 28, 42)',
                         fontSize: '20px',
                         justifyContent: 'center'
