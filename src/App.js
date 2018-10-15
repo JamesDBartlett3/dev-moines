@@ -112,10 +112,10 @@ export default class App extends Component {
     }
 
     // Use `toastify` to render toast-style message dialogs
-    handleError = () => toast.error(
+    handleError = (error) => toast.error(
         <div style={{color: 'black', fontWeight: 'bold'}}>
             <span role="img" aria-label="error">‼ </span>
-            Error Message
+            {error}
             <span role="img" aria-label="error"> ‼</span>
         </div>
     )
@@ -215,17 +215,18 @@ export default class App extends Component {
         // If an error occurred, collect the error message(s)
         .catch(error => {
             // and save it in this.state.error
-            this.setState({error})
-            console.log(this.state.error)
+            this.handleError(error)
         })
 
     }
     render() {
         return (
         <div className="App">
+            {/*
             <button onClick={this.handleError}>Test Error</button>
             <button onClick={this.handleOffline}>Test Offline</button>
             <button onClick={this.handleCached}>Test Cached</button>
+             */}
             <MuiThemeProvider theme={theme}>
                 <ResponsiveDrawer
                     {...this.state}

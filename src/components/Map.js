@@ -1,5 +1,3 @@
-/*  global google  */
-
 // This component is modeled after the one Forrest Walker demonstrated in his
 // tutorial video series on YouTube (https://goo.gl/XrrXg9). Thanks, Forrest!
 
@@ -84,7 +82,6 @@ export default class Map extends Component {
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `calc(100vh - calc(18px + 5vmin))` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
-                animation={{setAnimation: 'google.maps.Animation.DROP'}}
             />
         )
     }

@@ -136,6 +136,7 @@ class ResponsiveDrawer extends Component {
                 </Hidden>
                 <Hidden smDown implementation="css">
                     <Drawer
+                        style={{height: '100vh', overflow: 'auto'}}
                         variant="permanent"
                         open
                         classes={{

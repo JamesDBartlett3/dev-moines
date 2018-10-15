@@ -22,8 +22,9 @@ export default class ListItem extends Component {
 
             return (
                 <Card>
-                    <CardActions>
+                    <CardActions style={{width:'100%'}}>
                         <CardContent
+                            style={{width:'100%'}}
                             onClick={() => this.props.handleMarkerClick(
                                 this.props.markers[x.id]
                         )}>
@@ -48,13 +49,12 @@ export default class ListItem extends Component {
                             </Typography>
                         </CardContent>
                     </CardActions>
-
                 </Card>
             )
         }
 
         return (
-            <div>{jobCard(this.props.job)}</div>
+            <div><br />{jobCard(this.props.job)}</div>
         )
     }
 

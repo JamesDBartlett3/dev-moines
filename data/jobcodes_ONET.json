@@ -1,0 +1,211 @@
+{
+	"keyword": "software developer",
+	"start": 1,
+	"end": 20,
+	"total": 591,
+	"link": [{
+		"href": "https://services.onetcenter.org/v1.8/ws/online/search?keyword=software%20developer&start=21&end=40",
+		"rel": "next"
+	}],
+	"occupation": [{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1133.00/",
+			"relevance_score": 100,
+			"code": "15-1133.00",
+			"title": "Software Developers, Systems Software",
+			"tags": {
+				"bright_outlook": true,
+				"green": true
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1132.00/",
+			"relevance_score": 99,
+			"code": "15-1132.00",
+			"title": "Software Developers, Applications",
+			"tags": {
+				"bright_outlook": true,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1134.00/",
+			"relevance_score": 97,
+			"code": "15-1134.00",
+			"title": "Web Developers",
+			"tags": {
+				"bright_outlook": true,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1131.00/",
+			"relevance_score": 96,
+			"code": "15-1131.00",
+			"title": "Computer Programmers",
+			"tags": {
+				"bright_outlook": false,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/17-2072.01/",
+			"relevance_score": 95,
+			"code": "17-2072.01",
+			"title": "Radio Frequency Identification Device Specialists",
+			"tags": {
+				"bright_outlook": false,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/43-9011.00/",
+			"relevance_score": 94,
+			"code": "43-9011.00",
+			"title": "Computer Operators",
+			"tags": {
+				"bright_outlook": false,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1199.01/",
+			"relevance_score": 79,
+			"code": "15-1199.01",
+			"title": "Software Quality Assurance Engineers and Testers",
+			"tags": {
+				"bright_outlook": false,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1143.00/",
+			"relevance_score": 61,
+			"code": "15-1143.00",
+			"title": "Computer Network Architects",
+			"tags": {
+				"bright_outlook": false,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1199.02/",
+			"relevance_score": 56,
+			"code": "15-1199.02",
+			"title": "Computer Systems Engineers/Architects",
+			"tags": {
+				"bright_outlook": false,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1121.00/",
+			"relevance_score": 56,
+			"code": "15-1121.00",
+			"title": "Computer Systems Analysts",
+			"tags": {
+				"bright_outlook": false,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1151.00/",
+			"relevance_score": 50,
+			"code": "15-1151.00",
+			"title": "Computer User Support Specialists",
+			"tags": {
+				"bright_outlook": true,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1111.00/",
+			"relevance_score": 48,
+			"code": "15-1111.00",
+			"title": "Computer and Information Research Scientists",
+			"tags": {
+				"bright_outlook": true,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1142.00/",
+			"relevance_score": 47,
+			"code": "15-1142.00",
+			"title": "Network and Computer Systems Administrators",
+			"tags": {
+				"bright_outlook": false,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1152.00/",
+			"relevance_score": 47,
+			"code": "15-1152.00",
+			"title": "Computer Network Support Specialists",
+			"tags": {
+				"bright_outlook": false,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/15-1141.00/",
+			"relevance_score": 43,
+			"code": "15-1141.00",
+			"title": "Database Administrators",
+			"tags": {
+				"bright_outlook": true,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/43-9111.01/",
+			"relevance_score": 42,
+			"code": "43-9111.01",
+			"title": "Bioinformatics Technicians",
+			"tags": {
+				"bright_outlook": false,
+				"green": false
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/13-1151.00/",
+			"relevance_score": 39,
+			"code": "13-1151.00",
+			"title": "Training and Development Specialists",
+			"tags": {
+				"bright_outlook": true,
+				"green": true
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/19-4099.03/",
+			"relevance_score": 38,
+			"code": "19-4099.03",
+			"title": "Remote Sensing Technicians",
+			"tags": {
+				"bright_outlook": true,
+				"green": true
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/17-2072.00/",
+			"relevance_score": 37,
+			"code": "17-2072.00",
+			"title": "Electronics Engineers, Except Computer",
+			"tags": {
+				"bright_outlook": false,
+				"green": true
+			}
+		},
+		{
+			"href": "https://services.onetcenter.org/v1.8/ws/online/occupations/17-2061.00/",
+			"relevance_score": 37,
+			"code": "17-2061.00",
+			"title": "Computer Hardware Engineers",
+			"tags": {
+				"bright_outlook": false,
+				"green": false
+			}
+		}
+	]
+}
