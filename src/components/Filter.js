@@ -54,6 +54,7 @@ export default class Filter extends Component {
             >
                 <InputBase
                     placeholder="filter by business name"
+                    aria-label="filter by business name"
                     style={{
                         width: '90%',
                         height: '100%',

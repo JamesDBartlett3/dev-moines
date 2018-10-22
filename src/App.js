@@ -28,7 +28,6 @@ import * as gMapsAPI from './APIs/GoogleMapsAPI'
 import * as myJsonAPI from './APIs/MyJsonAPI'
 
 // 3rd Party JS Libraries
-import {Detector} from 'react-detect-offline'
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
@@ -101,48 +100,57 @@ export default class App extends Component {
                 phone: '',
                 website: ''
             },
-            error: {
-            },
+            error: '',
             online: true,
             cached: false
         }
     }
 
-    // Use `toastify` to render toast-style message dialogs
-    handleError = (error) => {
+
+    handleError = (error, info) => {
         this.setState({error})
+        const errorString = error.toString()
+        console.error(errorString)
         toast.error(
-            <div style={{color: 'black', fontWeight: 'bold'}}>
-                <span role="img" aria-label="error">‼ </span>
-                {error}
-                <span role="img" aria-label="error"> ‼</span>
+            <div style={{color: 'black'}}>
+                <div style={{fontWeight: 'bold'}}>
+                    <span role="img" aria-label="error">‼ -- </span>
+                    API Error
+                    <span role="img" aria-label="error"> -- ‼</span><br />
+                </div>
+                {info}
             </div>
         )
     }
+
     handleOffline = () => {
         if(this.state.online) {
             this.setState({online: false})
             toast.warning(
                 <div style={{color: 'black', fontWeight: 'bold'}}>
                     <span role="img" aria-label="offline">⦸ </span>
-                    Offline Message
-                    <span role="img" aria-label="offline"> ⦸</span>
+                    You are currently offline.
+                    <span role="img" aria-label="offline"> ⦸</span><br />
+                    App running from local cache.
                 </div>
             )
         }
     }
+
     handleOnline = () => {
         if(!this.state.online) {
             this.setState({online: true})
             toast.success(
                 <div style={{color: 'black', fontWeight: 'bold'}}>
                     <span role="img" aria-label="online"> </span>
-                    Online Message
+                    You are back online!
                     <span role="img" aria-label="online"> </span>
                 </div>
             )
         }
     }
+
+
     handleCached = () => {
         if(!this.state.cached) {
             this.setState({cached: true})
@@ -225,7 +233,7 @@ export default class App extends Component {
     // Fire this event when the App mounts successfully
     componentDidMount() {
         // Use axios to get json data from MyJsonAPI
-        axios.get(`${APIs.myJson.url}${APIs.myJson.id}`)
+        axios(`${APIs.myJson.url}${APIs.myJson.id}`)
         // then feed the results into jobs variable
         .then(res => {
             const jobs = res.data.jobs
@@ -247,51 +255,43 @@ export default class App extends Component {
 
         // If an error occurred, collect the error message(s)
         .catch(error => {
-            // and save it in this.state.error
+            // and pass them to handleError()
             this.handleError(error)
         })
 
+        // Set up event listeners for both online and offline states
+        // and set each to trigger its respective handler function
+        window.addEventListener('offline', () => {
+            this.handleOffline()
+        }, false)
+        window.addEventListener('online', () => {
+            this.handleOnline()
+        }, false)
     }
     render() {
         return (
-        <div className="App">
-            {/*
-            <button onClick={this.handleError}>Test Error</button>
-            <button onClick={this.handleOffline}>Test Offline</button>
-            <button onClick={this.handleCached}>Test Cached</button>
-             */}
+            <div className="App">
+                {/* Render the ResponsiveDrawer component inside of
+                    a MuiThemeProvider component. Pass App state, handleX, and
+                    liftState functions down as props to children components */}
+                <MuiThemeProvider theme={theme}>
+                    <ResponsiveDrawer
+                        {...this.state}
+                        handleFilterChange={this.handleFilterChange}
+                        handleMarkerClick={this.handleMarkerClick}
+                        // closeAllMarkers={this.closeAllMarkers}
+                        handleMapClick={this.handleMapClick}
+                        liftState={this.liftState}
+                        handleError={this.handleError}
+                    />
+                </MuiThemeProvider>
 
-            {/* Render the ResponsiveDrawer component inside of
-                a MuiThemeProvider component. Pass App state, handleX, and
-                liftState functions down as props to children components */}
-            <MuiThemeProvider theme={theme}>
-                <ResponsiveDrawer
-                    {...this.state}
-                    handleFilterChange={this.handleFilterChange}
-                    handleMarkerClick={this.handleMarkerClick}
-                    // closeAllMarkers={this.closeAllMarkers}
-                    handleMapClick={this.handleMapClick}
-                    liftState={this.liftState}
+                {/* Render the ToastContainer to display errors and other
+                    messages as graphical UI components rather than console  */}
+                <ToastContainer
+                    position='bottom-center'
                 />
-            </MuiThemeProvider>
-            {/* Render the ToastContainer to display errors and other
-                messages as graphical UI components rather than console  */}
-            <Detector
-                render={({ online }) => (
-                    <div style={{display: 'none'}}>
-                        {online ?
-                            this.handleOnline()
-                            :
-                            this.handleOffline()
-                        }
-                    </div>
-
-                )}
-            />
-            <ToastContainer
-                position='bottom-center'
-            />
-        </div>
+            </div>
         )
     }
 }

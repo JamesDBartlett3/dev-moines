@@ -1,26 +1,28 @@
 // This component is based on the ErrorBoundary example code in the
 // React documentation: https://reactjs.org/docs/error-boundaries.html
 
-import React from 'react'
+import {Component} from 'react'
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  componentDidCatch(error, info) {
-    // Display fallback UI
-    this.setState({ hasError: true });
-    // You can also log the error to an error reporting service
-    logErrorToMyService(error, info);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+export default class ErrorBoundary extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {hasError: false}
     }
-    return this.props.children;
-  }
+
+    componentDidCatch(error) {
+        // Display fallback UI
+        this.setState({hasError: true})
+        this.props.handleError(
+            error,
+            `Google Maps failed to load.
+            See the JavaScript console for details.`)
+    }
+
+    render() {
+        if (!this.state.hasError) {
+            return this.props.children
+        } else {
+            return null
+        }
+    }
 }

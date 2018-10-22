@@ -2,7 +2,9 @@
 // tutorial video series on YouTube (https://goo.gl/XrrXg9). Thanks, Forrest!
 
 import React, {Component} from 'react'
-import {withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
+import {withScriptjs, withGoogleMap,
+    GoogleMap, Marker, InfoWindow } from 'react-google-maps'
+import ErrorBoundary from './ErrorBoundary'
 
 // Split input into comma-delimited array
 const split = s => {
@@ -249,7 +251,6 @@ const mapStyle = [
 	]
 }]
 
-
 const MyMapComponent = withScriptjs(
     withGoogleMap(props => (
         <GoogleMap
@@ -338,14 +339,26 @@ export default class Map extends Component {
 
     render() {
 
+        // If Google Maps API fails to authenticate,
+        window.gm_authFailure = () => {
+            this.props.handleError(`
+                Google Maps API failed to authenticate.
+                Please ensure that your API key and/or client ID are correct.
+                `)
+        }
+
         return (
-            <MyMapComponent
-                {...this.props}
-                isMarkerShown
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `calc(100vh - calc(18px + 5vmin))` }} />}
-                mapElement={<div style={{ height: `100%`}} />}
-            />
+            <ErrorBoundary {...this.props}>
+                <MyMapComponent
+                    {...this.props}
+                    isMarkerShown
+                    loadingElement={<div style={{ height: `100%` }} />}
+                    containerElement={<div
+                        style={{ height: `calc(100vh - calc(18px + 5vmin))` }}
+                    />}
+                    mapElement={<div style={{ height: `100%`}} />}
+                />
+            </ErrorBoundary>
         )
     }
 }
