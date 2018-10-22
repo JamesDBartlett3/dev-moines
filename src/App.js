@@ -28,6 +28,7 @@ import * as gMapsAPI from './APIs/GoogleMapsAPI'
 import * as myJsonAPI from './APIs/MyJsonAPI'
 
 // 3rd Party JS Libraries
+import {Detector} from 'react-detect-offline'
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
@@ -101,36 +102,62 @@ export default class App extends Component {
                 website: ''
             },
             error: {
-
-            }
+            },
+            online: true,
+            cached: false
         }
     }
 
     // Use `toastify` to render toast-style message dialogs
-    handleError = (error) => toast.error(
-        <div style={{color: 'black', fontWeight: 'bold'}}>
-            <span role="img" aria-label="error">‼ </span>
-            {error}
-            <span role="img" aria-label="error"> ‼</span>
-        </div>
-    )
-    handleOffline = () => toast.warning(
-        <div style={{color: 'black', fontWeight: 'bold'}}>
-            <span role="img" aria-label="offline">⦸ </span>
-            Offline Message
-            <span role="img" aria-label="offline"> ⦸</span>
-        </div>
-    )
-    handleCached = () => toast.success(
-        <div style={{color: 'black', fontWeight: 'bold'}}>
-            <span role="img" aria-label="check">✓ </span>
-            App successfully cached!
-            <span role="img" aria-label="check"> ✓</span><br />
-            <span role="img" aria-label="globe-western-hemisphere">🌎 </span>
-             Offline mode now available.
-            <span role="img" aria-label="globe-eastern-hemisphere"> 🌍</span>
-        </div>
-    )
+    handleError = (error) => {
+        this.setState({error})
+        toast.error(
+            <div style={{color: 'black', fontWeight: 'bold'}}>
+                <span role="img" aria-label="error">‼ </span>
+                {error}
+                <span role="img" aria-label="error"> ‼</span>
+            </div>
+        )
+    }
+    handleOffline = () => {
+        if(this.state.online) {
+            this.setState({online: false})
+            toast.warning(
+                <div style={{color: 'black', fontWeight: 'bold'}}>
+                    <span role="img" aria-label="offline">⦸ </span>
+                    Offline Message
+                    <span role="img" aria-label="offline"> ⦸</span>
+                </div>
+            )
+        }
+    }
+    handleOnline = () => {
+        if(!this.state.online) {
+            this.setState({online: true})
+            toast.success(
+                <div style={{color: 'black', fontWeight: 'bold'}}>
+                    <span role="img" aria-label="online"> </span>
+                    Online Message
+                    <span role="img" aria-label="online"> </span>
+                </div>
+            )
+        }
+    }
+    handleCached = () => {
+        if(!this.state.cached) {
+            this.setState({cached: true})
+            toast.info(
+                <div style={{color: 'black', fontWeight: 'bold'}}>
+                    <span role="img" aria-label="check">✓ </span>
+                    App successfully cached!
+                    <span role="img" aria-label="check"> ✓</span><br />
+                    <span role="img" aria-label="globe-western-hemisphere">🌎 </span>
+                     Offline mode now available.
+                    <span role="img" aria-label="globe-eastern-hemisphere"> 🌍</span>
+                </div>
+            )
+        }
+    }
 
     // Function to close all currently-open markers on the map
     closeAllMarkers = () => {
@@ -247,9 +274,20 @@ export default class App extends Component {
                     liftState={this.liftState}
                 />
             </MuiThemeProvider>
-
             {/* Render the ToastContainer to display errors and other
                 messages as graphical UI components rather than console  */}
+            <Detector
+                render={({ online }) => (
+                    <div style={{display: 'none'}}>
+                        {online ?
+                            this.handleOnline()
+                            :
+                            this.handleOffline()
+                        }
+                    </div>
+
+                )}
+            />
             <ToastContainer
                 position='bottom-center'
             />
