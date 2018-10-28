@@ -203,11 +203,9 @@ export default class App extends Component {
                 // screen space is left for the InfoWindow to display
                 lat: (selected.latlng[0] + 0.0055),
                 lng: selected.latlng[1]
-            })})
-        setTimeout(() => {
-            this.setState({zoom: 15})
-        },1)
-
+            }),
+            zoom: 15
+        })
     }
 
     // function to handle when a user clicks anywhere on the map
