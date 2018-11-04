@@ -47,9 +47,8 @@ export default class List extends Component {
     render() {
         return (
             // Use handleFilterJobs to render the full list of jobs
-            // that match the filter. 
+            // that match the filter.
             <div>{this.handleFilterJobs()}</div>
         )
     }
-
 }
