@@ -22,10 +22,10 @@ App
 ```
 
 ## How to Use
-The easiest way to use this app is to [view it live on GitHub Pages.](https://jamesdbartlett.github.io/dev-moines/index.html)
+The easiest way to use this app is to [view it live on GitHub Pages.](https://jamesdbartlett3.github.io/dev-moines/index.html)
 
 For those of you who want to really dig into the source code, follow these steps in your command line:
-$`git clone https://github.com/JamesDBartlett/dev-moines.git`
+$`git clone https://github.com/JamesDBartlett3/dev-moines.git`
 $`cd dev-moines`
 $`yarn install`
 $`yarn start`
